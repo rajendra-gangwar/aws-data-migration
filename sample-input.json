@@ -1,0 +1,37 @@
+{
+    "environment": "dev",
+    "instances": [
+        <db-list for multi-tenent>
+    ],
+    "efs": {
+        "task_arn": "<data-sync-task-arn>",
+        "function": "<lambda-function-arn>",
+        "action": "sync",
+        "region": "<region>"
+    },
+    "schema": {
+        "storage": {
+            "bucket": "s32sqlpoc",
+            "region": "<region>"
+        },
+        "import_db": {
+            "function": "<lambda-function-name>",
+            "region": "<region>",
+            "action": "import",
+            "db_secret": "<admin db secret name>",
+            "prefix": "<prefix-for-db>",
+            "dms": {
+                "task_arn": "dms-task-arn",
+                "function": "<lambda-function-name>",
+                "region": "eu-central-1",
+                "action": "sync"
+            }
+        },
+        "export_db": {
+            "function": "<lambda-function-name>",
+            "region": "<region>",
+            "db_secret": "<admin db secret name>",
+            "action": "export"
+        }
+    }
+}
